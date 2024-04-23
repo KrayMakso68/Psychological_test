@@ -12,22 +12,23 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          PsyTest
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
 
       <q-tabs align="left">
-        <q-route-tab to="/gg" label="Page One" />
-        <q-route-tab to="/" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
-        <q-route-tab to="/page1" label="Page One" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
-        <q-route-tab to="/page1" label="Page One" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
+        <q-route-tab to="/results" label="Результаты" class="q-mr-lg"/>
+        <q-route-tab to="/test1" label="Риск" />
+        <q-route-tab to="/test2" label="Уверенность" />
+        <q-route-tab to="/test3" label="Самоконтроль" />
+        <q-route-tab to="/test4" label="Самооценка" />
+        <q-route-tab to="/test5" label="Внимательность" />
+        <q-route-tab to="/test6" label="Влияние внешних факторов" />
+        <q-route-tab to="/test7" label="Терперамент" />
+        <q-route-tab to="/test8" label="Поведение в конфликтной ситуации" />
+        <q-route-tab to="/test9" label="Какой вы водитель?" />
       </q-tabs>
 
     </q-header>
@@ -37,19 +38,32 @@
       show-if-above
       bordered
     >
+      <q-scroll-area class="fit">
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
+
+        <q-item-label header class="q-mt-lg">
+          Психологические тесты для водителей
         </q-item-label>
 
-        <EssentialLink
+        <TestLink
+          :key="resultTab.title"
+          v-bind="resultTab"
+        />
+
+        <q-item-label
+          header
+          class="q-mt-lg"
+        >
+          Тесты
+        </q-item-label>
+
+        <TestLink
           v-for="link in linksList"
           :key="link.title"
           v-bind="link"
         />
       </q-list>
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
@@ -60,54 +74,73 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
+import TestLink, {TestLinkProps} from 'components/TestLink.vue';
 
 defineOptions({
   name: 'MainLayout'
 });
 
-const linksList: EssentialLinkProps[] = [
+const resultTab: TestLinkProps = {
+  title: 'Результаты',
+  caption: 'Итоги пройденных тестов',
+  icon: 'assignment',
+  link: '/results'
+};
+
+const linksList: TestLinkProps[] = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Риск',
+    caption: 'Любите ли вы риск?',
+    icon: 'fact_check',
+    link: '/test1'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'Уверенность',
+    caption: 'Насколько вы уверены в себе?',
+    icon: 'fact_check',
+    link: '/test2'
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: 'Самоконтроль',
+    caption: 'Умеете ли вы контролировать себя?',
+    icon: 'fact_check',
+    link: '/test3'
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: 'Самооценка',
+    caption: 'Ваша самооценка?',
+    icon: 'fact_check',
+    link: '/test4'
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: 'Внимательность',
+    caption: 'Внимательный ли вы человек?',
+    icon: 'fact_check',
+    link: '/test5'
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    title: 'Влияние внешних факторов',
+    caption: 'Тест на влияние внешних факторов на эмоциональное состояние',
+    icon: 'fact_check',
+    link: '/test6'
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: 'Терперамент',
+    caption: 'Тест на тип терперамента',
+    icon: 'fact_check',
+    link: '/test7'
+  },
+  {
+    title: 'Поведение в конфликтной ситуации',
+    caption: 'Оценка собственного поведения в конфликтной ситуации на дороге',
+    icon: 'fact_check',
+    link: '/test8'
+  },
+  {
+    title: 'Какой вы водитель?',
+    caption: '',
+    icon: 'fact_check',
+    link: '/test9'
   }
 ];
 

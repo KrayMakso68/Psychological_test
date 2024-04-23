@@ -1,7 +1,7 @@
 <template>
   <q-item
     clickable
-    to="/gg"
+    :to=link
   >
     <q-item-section
       v-if="icon"
@@ -19,17 +19,17 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'EssentialLink'
+  name: 'TestLink'
 });
 
-export interface EssentialLinkProps {
+export interface TestLinkProps {
   title: string;
   caption?: string;
   link?: string;
   icon?: string;
 };
 
-withDefaults(defineProps<EssentialLinkProps>(), {
+withDefaults(defineProps<TestLinkProps>(), {
   caption: '',
   link: '#',
   icon: '',

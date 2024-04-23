@@ -6,7 +6,17 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'gg', component: () => import('pages/IndexPage1.vue'), name: 'gg' }
+      { path: 'results', component: () => import('pages/ResultsPage.vue') },
+      { path: 'test1', component: () => import('pages/Test1Page.vue') },
+      { path: 'test2', component: () => import('pages/Test1Page.vue') },
+      { path: 'test3', component: () => import('pages/Test1Page.vue') },
+      { path: 'test4', component: () => import('pages/Test1Page.vue') },
+      { path: 'test5', component: () => import('pages/Test1Page.vue') },
+      { path: 'test6', component: () => import('pages/Test1Page.vue') },
+      { path: 'test7', component: () => import('pages/Test1Page.vue') },
+      { path: 'test8', component: () => import('pages/Test1Page.vue') },
+      { path: 'test9', component: () => import('pages/Test1Page.vue') }
+
     ],
   },
 
